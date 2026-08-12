@@ -1,0 +1,12 @@
+run_name: sld-medium
+model_id: AIML-TUDA/stable-diffusion-safe
+seed: 5230
+num_inference_steps: 50
+guidance_scale: 7.5
+safety:
+  configuration: medium
+  record_active_concept: true
+output_dir: outputs/baseline/sld-medium
+
+# This configuration declares the published baseline only. Do not add an experimental
+# defence here; future modifications must use separate, versioned configuration files.

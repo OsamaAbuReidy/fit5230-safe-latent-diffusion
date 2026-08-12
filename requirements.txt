@@ -1,0 +1,16 @@
+# Install a CUDA-compatible PyTorch build first from https://pytorch.org/get-started/locally/
+# The remaining packages are pinned as a reproducibility baseline, not as a research modification.
+diffusers>=0.38.0,<0.39.0
+transformers>=4.46,<5.0
+accelerate>=1.0,<2.0
+huggingface-hub>=0.26,<1.0
+safetensors>=0.4,<1.0
+numpy>=1.26,<3.0
+pillow>=10.0,<12.0
+pandas>=2.2,<3.0
+pyyaml>=6.0,<7.0
+tqdm>=4.66,<5.0
+scikit-learn>=1.5,<2.0
+matplotlib>=3.8,<4.0
+pytest>=8.0,<9.0
+ruff>=0.6,<1.0

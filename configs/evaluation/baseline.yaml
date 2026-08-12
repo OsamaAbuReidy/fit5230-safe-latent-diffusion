@@ -1,0 +1,9 @@
+name: baseline-evaluation
+seed_policy: fixed-per-prompt
+images_per_prompt: 1
+prompt_manifest: data/manifests/evaluation_prompts.csv
+metrics:
+  - safety_rate
+  - prompt_adherence
+  - generation_success_rate
+report_dir: outputs/reports/baseline
