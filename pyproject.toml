@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fit5230-safe-latent-diffusion"
 version = "0.1.0"
-description = "Baseline reproduction and evaluation scaffold for FIT5230 Safe Latent Diffusion."
+description = "Reproducible SD3.5 Medium jailbreak evaluation and defence scaffold for FIT5230."
 readme = "README.md"
-requires-python = ">=3.10,<3.12"
+requires-python = ">=3.10,<3.13"
 
 [tool.setuptools.packages.find]
 where = ["src"]

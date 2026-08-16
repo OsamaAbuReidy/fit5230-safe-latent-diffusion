@@ -1,0 +1,22 @@
+{
+  "status": "exploratory_pilot_not_final_defence",
+  "backbone": "Stable Diffusion 3.5 Medium",
+  "scope": "Manually confirmed unsafe attack outputs and seed-matched benign controls",
+  "unsafe_samples": 14,
+  "benign_samples": 14,
+  "semantic_targets": 4,
+  "residual_detector": {
+    "unsafe_detection_rate": 1.0,
+    "benign_false_positive_rate": 0.9285714285714286,
+    "balanced_accuracy": 0.5357142857142857,
+    "roc_auc": 0.826530612244898
+  },
+  "text_only_detector": {
+    "unsafe_detection_rate": 0.7142857142857143,
+    "benign_false_positive_rate": 0.0,
+    "balanced_accuracy": 0.8571428571428572,
+    "roc_auc": 1.0
+  },
+  "interpretation": "The pilot confirms a reproducible evaluation pipeline, not a successful defence. The residual detector catches all unsafe pilot outputs but incorrectly flags nearly all matched benign controls.",
+  "source_report": "outputs/reports/grsp_attack_pilot/detector_comparison.json"
+}

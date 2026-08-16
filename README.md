@@ -1,21 +1,28 @@
-# FIT5230 Safe Latent Diffusion
+# FIT5230 SD3.5 Medium Jailbreak Defence
 
 Reproducible coursework repository for FIT5230 Malicious AI (2026).
 
 - Theme: Text-to-Image
 - Side: Light (defence)
-- Baseline: Safe Latent Diffusion (SLD)
-- Scope now: reproduce and measure the published baseline only. No proposed research modification is implemented in this repository yet.
+- Backbone: Stable Diffusion 3.5 Medium
+- Baseline paper: JailbreakDiffBench (ICCV 2025)
+- Scope now: reproduce DACA/PGJ-style attack evaluation on a fixed SD3.5 Medium
+  workflow and establish defensible text-only and in-generation safety baselines.
+  No final research modification has been selected.
 
 ## Why this baseline
 
-Safe Latent Diffusion applies safety guidance during the diffusion process without retraining. It is a suitable Light-side baseline because it makes an explicit safety--utility trade-off that can be reproduced and evaluated. The published method also provides the I2P test bed for measuring inappropriate-generation behaviour.
+JailbreakDiffBench provides a published attack and evaluation framework covering
+modern text-to-image systems, including SD3.5 Medium. For a Light-side project,
+an attack-focused paper is an appropriate baseline because the assignment permits
+developing a defence against the selected attack. SD3.5 Medium is the fixed local
+generation backbone used for reproducible experiments.
 
 Primary references:
 
-- Paper: [Safe Latent Diffusion: Mitigating Inappropriate Degeneration in Diffusion Models](https://arxiv.org/abs/2211.05105)
-- Reference code: [ml-research/safe-latent-diffusion](https://github.com/ml-research/safe-latent-diffusion)
-- Supported implementation: [Hugging Face Safe Stable Diffusion](https://huggingface.co/docs/diffusers/main/api/pipelines/stable_diffusion/stable_diffusion_safe)
+- Paper: [JailbreakDiffBench: A Comprehensive Benchmark for Jailbreaking Diffusion Models](https://www.openaccess.thecvf.com/content/ICCV2025/papers/Jin_JailbreakDiffBench_A_Comprehensive_Benchmark_for_Jailbreaking_Diffusion_Models_ICCV_2025_paper.pdf)
+- Reference code: [Jinxiaolong1129/JailbreakDiffusionBench](https://github.com/Jinxiaolong1129/JailbreakDiffusionBench)
+- Backbone: [Stable Diffusion 3.5 Medium](https://huggingface.co/stabilityai/stable-diffusion-3.5-medium)
 
 ## Repository map
 
@@ -30,19 +37,29 @@ src/           Reusable project package (baseline, data, evaluation, utilities)
 tests/         Smoke and regression tests
 ```
 
-See [docs/setup-plan.md](docs/setup-plan.md) for the staged setup plan and [docs/assignment-brief.md](docs/assignment-brief.md) for the requirements that shape this repository.
+Start with the
+[Milestone 1 notebook](notebooks/milestone1_baseline_challenge.ipynb). See
+[docs/assignment-brief.md](docs/assignment-brief.md) for the marking requirements
+and [docs/research-branch-counterfactual-early-safety.md](docs/research-branch-counterfactual-early-safety.md)
+for the separately parked publication-oriented branch.
 
 ## Environment
 
-Use Python 3.10 or 3.11 and a CUDA-capable GPU for practical baseline reproduction. Install a PyTorch build matching the local CUDA runtime first, then install the locked project dependencies:
+Use Python 3.10, 3.11, or 3.12 for project tooling. SD3.5 Medium image
+generation currently runs through the local ComfyUI workflow; the Milestone 1
+Colab is a lightweight public entry point and does not download model weights.
 
 ```bash
 pip install -r requirements.txt
 pip install -e .
 ```
 
-Do not disable safety components in public-facing demonstrations. Store any model-access token locally in `.env`; never commit it.
+Store any model-access token locally in `.env`; never commit it.
 
 ## Current status
 
-Repository scaffold and documentation are in place. The next technical task is a benign-prompt smoke test of the unmodified SLD baseline, followed by a fixed-seed evaluation protocol. Candidate weaknesses and improvements will be documented only after baseline reproduction evidence is available.
+The SD3.5 Medium workflow, fixed-seed runner, early-feature logger, and
+exploratory detector comparison are functioning. The current detector is not a
+successful defence because it produces excessive benign false positives. The
+next task is to freeze the Milestone 1 challenge and then expand the baseline
+evaluation before selecting one separate, configurable defence modification.

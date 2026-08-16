@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+*.egg-info/
 .venv/
 venv/
 .pytest_cache/
@@ -19,7 +20,9 @@ data/cache/
 outputs/*
 !outputs/.gitkeep
 checkpoints/
+models/
 wandb/
+tmp/
 
 # Notebooks
 .ipynb_checkpoints/
