@@ -1,0 +1,570 @@
+{
+  "schema_version": 1,
+  "experiment": "fixed_split_final_latent_classifier",
+  "seed": 5230,
+  "labels_file": "data/annotations/latent_guard_pilot_v1_human_labels_v2.csv",
+  "records_root": "data/raw/latent_guard/latent_guard_pilot_v1/records",
+  "usable_sample_count": 372,
+  "latent_feature_count": 1088,
+  "selection_protocol": "select C on validation macro-F1; refit train+validation; evaluate test once",
+  "binary_any_harm": {
+    "class_order": [
+      "benign",
+      "harmful"
+    ],
+    "split_counts": {
+      "train": 225,
+      "validation": 55,
+      "test": 92
+    },
+    "class_counts": {
+      "train": {
+        "benign": 147,
+        "harmful": 78
+      },
+      "validation": {
+        "benign": 35,
+        "harmful": 20
+      },
+      "test": {
+        "benign": 62,
+        "harmful": 30
+      }
+    },
+    "latent": {
+      "selected_c": 0.01,
+      "validation_search": [
+        {
+          "c": 0.01,
+          "validation_macro_f1": 0.7348
+        },
+        {
+          "c": 0.1,
+          "validation_macro_f1": 0.6803
+        },
+        {
+          "c": 1.0,
+          "validation_macro_f1": 0.7179
+        },
+        {
+          "c": 10.0,
+          "validation_macro_f1": 0.7179
+        }
+      ],
+      "test": {
+        "sample_count": 92,
+        "balanced_accuracy": 0.6296,
+        "macro_f1": 0.6259,
+        "confusion_matrix": [
+          [
+            45,
+            17
+          ],
+          [
+            14,
+            16
+          ]
+        ],
+        "class_order": [
+          "benign",
+          "harmful"
+        ],
+        "classification_report": {
+          "benign": {
+            "precision": 0.7627118644067796,
+            "recall": 0.7258064516129032,
+            "f1-score": 0.743801652892562,
+            "support": 62.0
+          },
+          "harmful": {
+            "precision": 0.48484848484848486,
+            "recall": 0.5333333333333333,
+            "f1-score": 0.5079365079365079,
+            "support": 30.0
+          },
+          "accuracy": 0.6630434782608695,
+          "macro avg": {
+            "precision": 0.6237801746276322,
+            "recall": 0.6295698924731183,
+            "f1-score": 0.6258690804145349,
+            "support": 92.0
+          },
+          "weighted avg": {
+            "precision": 0.6721042406377705,
+            "recall": 0.6630434782608695,
+            "f1-score": 0.6668891056242835,
+            "support": 92.0
+          }
+        },
+        "roc_auc": 0.7215,
+        "average_precision": 0.5709
+      }
+    },
+    "text_only": {
+      "selected_c": 1.0,
+      "validation_search": [
+        {
+          "c": 0.01,
+          "validation_macro_f1": 0.8308
+        },
+        {
+          "c": 0.1,
+          "validation_macro_f1": 0.8308
+        },
+        {
+          "c": 1.0,
+          "validation_macro_f1": 0.8485
+        },
+        {
+          "c": 10.0,
+          "validation_macro_f1": 0.7556
+        }
+      ],
+      "test": {
+        "sample_count": 92,
+        "balanced_accuracy": 0.7704,
+        "macro_f1": 0.7535,
+        "confusion_matrix": [
+          [
+            48,
+            14
+          ],
+          [
+            7,
+            23
+          ]
+        ],
+        "class_order": [
+          "benign",
+          "harmful"
+        ],
+        "classification_report": {
+          "benign": {
+            "precision": 0.8727272727272727,
+            "recall": 0.7741935483870968,
+            "f1-score": 0.8205128205128205,
+            "support": 62.0
+          },
+          "harmful": {
+            "precision": 0.6216216216216216,
+            "recall": 0.7666666666666667,
+            "f1-score": 0.6865671641791045,
+            "support": 30.0
+          },
+          "accuracy": 0.7717391304347826,
+          "macro avg": {
+            "precision": 0.7471744471744471,
+            "recall": 0.7704301075268818,
+            "f1-score": 0.7535399923459625,
+            "support": 92.0
+          },
+          "weighted avg": {
+            "precision": 0.7908449951928213,
+            "recall": 0.7717391304347826,
+            "f1-score": 0.7768348890996523,
+            "support": 92.0
+          }
+        },
+        "roc_auc": 0.8145,
+        "average_precision": 0.6685
+      }
+    }
+  },
+  "violence_gore_vs_benign": {
+    "class_order": [
+      "benign",
+      "violence_gore"
+    ],
+    "split_counts": {
+      "train": 192,
+      "validation": 45,
+      "test": 75
+    },
+    "class_counts": {
+      "train": {
+        "benign": 147,
+        "violence_gore": 45
+      },
+      "validation": {
+        "benign": 35,
+        "violence_gore": 10
+      },
+      "test": {
+        "benign": 62,
+        "violence_gore": 13
+      }
+    },
+    "latent": {
+      "selected_c": 0.01,
+      "validation_search": [
+        {
+          "c": 0.01,
+          "validation_macro_f1": 0.8447
+        },
+        {
+          "c": 0.1,
+          "validation_macro_f1": 0.7594
+        },
+        {
+          "c": 1.0,
+          "validation_macro_f1": 0.7837
+        },
+        {
+          "c": 10.0,
+          "validation_macro_f1": 0.7619
+        }
+      ],
+      "test": {
+        "sample_count": 75,
+        "balanced_accuracy": 0.727,
+        "macro_f1": 0.695,
+        "confusion_matrix": [
+          [
+            52,
+            10
+          ],
+          [
+            5,
+            8
+          ]
+        ],
+        "class_order": [
+          "benign",
+          "violence_gore"
+        ],
+        "classification_report": {
+          "benign": {
+            "precision": 0.9122807017543859,
+            "recall": 0.8387096774193549,
+            "f1-score": 0.8739495798319328,
+            "support": 62.0
+          },
+          "violence_gore": {
+            "precision": 0.4444444444444444,
+            "recall": 0.6153846153846154,
+            "f1-score": 0.5161290322580645,
+            "support": 13.0
+          },
+          "accuracy": 0.8,
+          "macro avg": {
+            "precision": 0.6783625730994152,
+            "recall": 0.7270471464019852,
+            "f1-score": 0.6950393060449986,
+            "support": 75.0
+          },
+          "weighted avg": {
+            "precision": 0.8311890838206627,
+            "recall": 0.8,
+            "f1-score": 0.8119273515857957,
+            "support": 75.0
+          }
+        },
+        "roc_auc": 0.8449,
+        "average_precision": 0.6179
+      }
+    },
+    "text_only": {
+      "selected_c": 10.0,
+      "validation_search": [
+        {
+          "c": 0.01,
+          "validation_macro_f1": 0.8062
+        },
+        {
+          "c": 0.1,
+          "validation_macro_f1": 0.8062
+        },
+        {
+          "c": 1.0,
+          "validation_macro_f1": 0.8195
+        },
+        {
+          "c": 10.0,
+          "validation_macro_f1": 0.8447
+        }
+      ],
+      "test": {
+        "sample_count": 75,
+        "balanced_accuracy": 0.8666,
+        "macro_f1": 0.817,
+        "confusion_matrix": [
+          [
+            55,
+            7
+          ],
+          [
+            2,
+            11
+          ]
+        ],
+        "class_order": [
+          "benign",
+          "violence_gore"
+        ],
+        "classification_report": {
+          "benign": {
+            "precision": 0.9649122807017544,
+            "recall": 0.8870967741935484,
+            "f1-score": 0.9243697478991597,
+            "support": 62.0
+          },
+          "violence_gore": {
+            "precision": 0.6111111111111112,
+            "recall": 0.8461538461538461,
+            "f1-score": 0.7096774193548387,
+            "support": 13.0
+          },
+          "accuracy": 0.88,
+          "macro avg": {
+            "precision": 0.7880116959064327,
+            "recall": 0.8666253101736973,
+            "f1-score": 0.8170235836269992,
+            "support": 75.0
+          },
+          "weighted avg": {
+            "precision": 0.9035867446393763,
+            "recall": 0.88,
+            "f1-score": 0.8871564109514775,
+            "support": 75.0
+          }
+        },
+        "roc_auc": 0.9007,
+        "average_precision": 0.7745
+      }
+    }
+  },
+  "multiclass_harm_type": {
+    "class_order": [
+      "benign",
+      "dangerous",
+      "sexual",
+      "violence_gore"
+    ],
+    "split_counts": {
+      "train": 225,
+      "validation": 55,
+      "test": 92
+    },
+    "class_counts": {
+      "train": {
+        "benign": 147,
+        "dangerous": 23,
+        "sexual": 10,
+        "violence_gore": 45
+      },
+      "validation": {
+        "benign": 35,
+        "dangerous": 7,
+        "sexual": 3,
+        "violence_gore": 10
+      },
+      "test": {
+        "benign": 62,
+        "dangerous": 11,
+        "sexual": 6,
+        "violence_gore": 13
+      }
+    },
+    "latent": {
+      "selected_c": 10.0,
+      "validation_search": [
+        {
+          "c": 0.01,
+          "validation_macro_f1": 0.569
+        },
+        {
+          "c": 0.1,
+          "validation_macro_f1": 0.5902
+        },
+        {
+          "c": 1.0,
+          "validation_macro_f1": 0.6063
+        },
+        {
+          "c": 10.0,
+          "validation_macro_f1": 0.6671
+        }
+      ],
+      "test": {
+        "sample_count": 92,
+        "balanced_accuracy": 0.396,
+        "macro_f1": 0.3667,
+        "confusion_matrix": [
+          [
+            44,
+            7,
+            3,
+            8
+          ],
+          [
+            6,
+            2,
+            1,
+            2
+          ],
+          [
+            4,
+            1,
+            0,
+            1
+          ],
+          [
+            3,
+            1,
+            0,
+            9
+          ]
+        ],
+        "class_order": [
+          "benign",
+          "dangerous",
+          "sexual",
+          "violence_gore"
+        ],
+        "classification_report": {
+          "benign": {
+            "precision": 0.7719298245614035,
+            "recall": 0.7096774193548387,
+            "f1-score": 0.7394957983193278,
+            "support": 62.0
+          },
+          "dangerous": {
+            "precision": 0.18181818181818182,
+            "recall": 0.18181818181818182,
+            "f1-score": 0.18181818181818182,
+            "support": 11.0
+          },
+          "sexual": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "violence_gore": {
+            "precision": 0.45,
+            "recall": 0.6923076923076923,
+            "f1-score": 0.5454545454545454,
+            "support": 13.0
+          },
+          "accuracy": 0.5978260869565217,
+          "macro avg": {
+            "precision": 0.3509370015948963,
+            "recall": 0.39595082337017823,
+            "f1-score": 0.36669213139801377,
+            "support": 92.0
+          },
+          "weighted avg": {
+            "precision": 0.6055396643783372,
+            "recall": 0.5978260869565217,
+            "f1-score": 0.5971700933337761,
+            "support": 92.0
+          }
+        },
+        "macro_ovr_roc_auc": 0.7521
+      }
+    },
+    "text_only": {
+      "selected_c": 0.1,
+      "validation_search": [
+        {
+          "c": 0.01,
+          "validation_macro_f1": 0.702
+        },
+        {
+          "c": 0.1,
+          "validation_macro_f1": 0.7243
+        },
+        {
+          "c": 1.0,
+          "validation_macro_f1": 0.6437
+        },
+        {
+          "c": 10.0,
+          "validation_macro_f1": 0.5568
+        }
+      ],
+      "test": {
+        "sample_count": 92,
+        "balanced_accuracy": 0.6702,
+        "macro_f1": 0.6193,
+        "confusion_matrix": [
+          [
+            48,
+            4,
+            4,
+            6
+          ],
+          [
+            0,
+            8,
+            1,
+            2
+          ],
+          [
+            4,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            11
+          ]
+        ],
+        "class_order": [
+          "benign",
+          "dangerous",
+          "sexual",
+          "violence_gore"
+        ],
+        "classification_report": {
+          "benign": {
+            "precision": 0.9230769230769231,
+            "recall": 0.7741935483870968,
+            "f1-score": 0.8421052631578947,
+            "support": 62.0
+          },
+          "dangerous": {
+            "precision": 0.5714285714285714,
+            "recall": 0.7272727272727273,
+            "f1-score": 0.64,
+            "support": 11.0
+          },
+          "sexual": {
+            "precision": 0.2857142857142857,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3076923076923077,
+            "support": 6.0
+          },
+          "violence_gore": {
+            "precision": 0.5789473684210527,
+            "recall": 0.8461538461538461,
+            "f1-score": 0.6875,
+            "support": 13.0
+          },
+          "accuracy": 0.75,
+          "macro avg": {
+            "precision": 0.5897917871602082,
+            "recall": 0.6702383637867508,
+            "f1-score": 0.6193243927125507,
+            "support": 92.0
+          },
+          "weighted avg": {
+            "precision": 0.7908378806548143,
+            "recall": 0.75,
+            "f1-score": 0.7612410887167751,
+            "support": 92.0
+          }
+        },
+        "macro_ovr_roc_auc": 0.7891
+      }
+    }
+  },
+  "limitations": [
+    "Labels come from one human reviewer.",
+    "This is a lightweight pooled-final-latent linear probe, not a temporal early-step guard.",
+    "The dataset is small and several generated-image harm classes are imbalanced."
+  ]
+}

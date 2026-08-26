@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "run_id": "latent_guard_pilot_v1",
+  "status": "pass",
+  "integrity": {
+    "manifest_rows": 400,
+    "canonical_label_rows": 400,
+    "successful_records": 400,
+    "accessible_images": 400,
+    "accessible_latents": 400,
+    "latent_shapes": {
+      "[1, 16, 128, 128]": 400
+    },
+    "latent_dtypes": {
+      "float16": 400
+    },
+    "core_generation_setting_variants": 1,
+    "vae_decode_metadata_variants": {
+      "{\"vae_decode\": \"tiled\", \"vae_overlap\": 64, \"vae_tile_size\": 512}": 399,
+      "{\"vae_decode\": \"unspecified\", \"vae_overlap\": null, \"vae_tile_size\": null}": 1
+    },
+    "errors": [],
+    "warnings": [
+      "VAE decode metadata has multiple variants: one early record omits tiling fields; this does not affect the saved pre-decode latent used for classifier training"
+    ]
+  },
+  "usability": {
+    "usable": 372,
+    "unusable": 28,
+    "usable_percent": 93.0,
+    "by_candidate_policy": {
+      "benign": {
+        "usable": 100
+      },
+      "dangerous": {
+        "unusable": 2,
+        "usable": 98
+      },
+      "sexual": {
+        "unusable": 24,
+        "usable": 76
+      },
+      "violence_gore": {
+        "unusable": 2,
+        "usable": 98
+      }
+    }
+  },
+  "human_labels": {
+    "overall": {
+      "benign": 244,
+      "dangerous": 41,
+      "invalid": 28,
+      "sexual": 19,
+      "violence_gore": 68
+    },
+    "by_split": {
+      "test": {
+        "benign": 62,
+        "dangerous": 11,
+        "invalid": 8,
+        "sexual": 6,
+        "violence_gore": 13
+      },
+      "train": {
+        "benign": 147,
+        "dangerous": 23,
+        "invalid": 15,
+        "sexual": 10,
+        "violence_gore": 45
+      },
+      "validation": {
+        "benign": 35,
+        "dangerous": 7,
+        "invalid": 5,
+        "sexual": 3,
+        "violence_gore": 10
+      }
+    },
+    "by_candidate_policy": {
+      "benign": {
+        "benign": 100
+      },
+      "dangerous": {
+        "benign": 52,
+        "dangerous": 35,
+        "invalid": 2,
+        "sexual": 2,
+        "violence_gore": 9
+      },
+      "sexual": {
+        "benign": 57,
+        "dangerous": 1,
+        "invalid": 24,
+        "sexual": 17,
+        "violence_gore": 1
+      },
+      "violence_gore": {
+        "benign": 35,
+        "dangerous": 5,
+        "invalid": 2,
+        "violence_gore": 58
+      }
+    },
+    "by_source": {
+      "coco30k": {
+        "benign": 50
+      },
+      "i2p": {
+        "benign": 116,
+        "dangerous": 8,
+        "invalid": 5,
+        "sexual": 6,
+        "violence_gore": 15
+      },
+      "parti_prompts": {
+        "benign": 50
+      },
+      "t2i_risky_prompt": {
+        "benign": 28,
+        "dangerous": 33,
+        "invalid": 23,
+        "sexual": 13,
+        "violence_gore": 53
+      }
+    }
+  },
+  "split_leakage": {
+    "scenario_id": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    },
+    "prompt_sha256": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    },
+    "record_id": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    }
+  },
+  "shieldgemma_agreement_on_usable": {
+    "sample_count": 372,
+    "binary_any_harm": {
+      "balanced_accuracy": 0.6646,
+      "f1": 0.5181,
+      "confusion": {
+        "tn": 229,
+        "fp": 15,
+        "fn": 78,
+        "tp": 50
+      }
+    },
+    "per_policy": {
+      "sexual": {
+        "balanced_accuracy": 0.8401,
+        "f1": 0.5283,
+        "confusion": {
+          "tn": 333,
+          "fp": 20,
+          "fn": 5,
+          "tp": 14
+        }
+      },
+      "violence": {
+        "balanced_accuracy": 0.6445,
+        "f1": 0.4421,
+        "confusion": {
+          "tn": 298,
+          "fp": 6,
+          "fn": 47,
+          "tp": 21
+        }
+      },
+      "dangerous": {
+        "balanced_accuracy": 0.6056,
+        "f1": 0.3,
+        "confusion": {
+          "tn": 304,
+          "fp": 27,
+          "fn": 29,
+          "tp": 12
+        }
+      }
+    }
+  }
+}
