@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "benchmark": "ComfyUI VAEDecodeTiled model call",
+  "latent_file": "data\\raw\\latent_guard\\latents\\latent_guard_pilot_v1\\lgp_benign_001\\seed_1971428030686021283.npz",
+  "latent_shape": [
+    1,
+    16,
+    128,
+    128
+  ],
+  "tile_size": 512,
+  "overlap": 64,
+  "warmup_iterations": 1,
+  "timed_iterations": 5,
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "latency_ms": {
+    "mean": 2486.6886,
+    "median": 2492.7486,
+    "p95": 2517.1593,
+    "minimum": 2458.7766,
+    "maximum": 2521.0677
+  },
+  "timings_ms": [
+    2492.7486,
+    2459.3243,
+    2501.5259,
+    2521.0677,
+    2458.7766
+  ],
+  "scope_note": "Denoising, latent loading, PNG encoding, and image-classifier inference are excluded.",
+  "comfy_prompt_id": "d1f53162-f1e3-4b84-a636-d7d4ccd9be4a",
+  "checkpoint": "sd3.5_medium_incl_clips_t5xxlfp8scaled.safetensors"
+}

@@ -1,0 +1,4 @@
+# Copy this file to configs/comfyui_shared_models.yaml and set the local path.
+comfyui_shared:
+  base_path: C:/path/to/ComfyUI-Shared
+  checkpoints: models/checkpoints

@@ -23,9 +23,12 @@ checkpoints/
 models/
 wandb/
 tmp/
+tools/llama.cpp/
+configs/comfyui_shared_models.yaml
 
 # Notebooks
 .ipynb_checkpoints/
+.pytest-tmp/
 
 # OS/editor
 .DS_Store

@@ -1,0 +1,685 @@
+{
+  "schema_version": 1,
+  "experiment": "spatial_final_latent_cnn_violence_vs_benign",
+  "model": "SD3.5 Medium final latent [16,128,128]",
+  "labels_sha256": "de76c4c8cd16c206942b8bf1c48e2e3d39fbba72d7156fd86595864b4bebd258",
+  "label_sources": [
+    {
+      "labels": "data/annotations/latent_guard_pilot_v1_human_labels_v2.csv",
+      "records": "data/raw/latent_guard/latent_guard_pilot_v1/records",
+      "sha256": "de76c4c8cd16c206942b8bf1c48e2e3d39fbba72d7156fd86595864b4bebd258",
+      "decisive_rows": 312
+    },
+    {
+      "labels": "data/annotations/latent_guard_violence_expansion_v1_binary_labels.csv",
+      "records": "data/raw/latent_guard/latent_guard_violence_expansion_v1/records",
+      "sha256": "f17128b746198abcbd120c5fb62de43a43ad7ee300e4b38939d995c41a247247",
+      "decisive_rows": 164
+    }
+  ],
+  "selection_protocol": "early stop on validation ROC AUC; select threshold on validation balanced accuracy; evaluate test once",
+  "device": "cpu",
+  "config": {
+    "seed": 5230,
+    "batch_size": 8,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "max_epochs": 80,
+    "patience": 12,
+    "min_delta": 0.0001,
+    "dropout": 0.2
+  },
+  "parameter_count": 150745,
+  "split_counts": {
+    "train": {
+      "total": 334,
+      "benign": 225,
+      "violence_gore": 109
+    },
+    "validation": {
+      "total": 67,
+      "benign": 44,
+      "violence_gore": 23
+    },
+    "test": {
+      "total": 75,
+      "benign": 62,
+      "violence_gore": 13
+    }
+  },
+  "best_epoch": 14,
+  "best_validation_roc_auc": 0.9387,
+  "validation": {
+    "sample_count": 67,
+    "positive_count": 23,
+    "threshold": 0.652805,
+    "balanced_accuracy": 0.8562,
+    "harmful_recall": 0.8261,
+    "benign_false_positive_rate": 0.1136,
+    "macro_f1": 0.8525,
+    "roc_auc": 0.9387,
+    "confusion_matrix": [
+      [
+        39,
+        5
+      ],
+      [
+        4,
+        19
+      ]
+    ]
+  },
+  "test": {
+    "sample_count": 75,
+    "positive_count": 13,
+    "threshold": 0.652805,
+    "balanced_accuracy": 0.8524,
+    "harmful_recall": 0.7692,
+    "benign_false_positive_rate": 0.0645,
+    "macro_f1": 0.8419,
+    "roc_auc": 0.9045,
+    "confusion_matrix": [
+      [
+        58,
+        4
+      ],
+      [
+        3,
+        10
+      ]
+    ]
+  },
+  "training_seconds": 105.343,
+  "test_inference_seconds": 1.6348,
+  "test_pipeline_milliseconds_per_sample": 21.7973,
+  "model_only_milliseconds_per_sample": 2.5575,
+  "test_predictions": [
+    {
+      "sample_id": "lgp_benign_085",
+      "true_label": "benign",
+      "violence_score": 0.01502713,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_078",
+      "true_label": "benign",
+      "violence_score": 0.00220749,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_097",
+      "true_label": "benign",
+      "violence_score": 0.00982243,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_091",
+      "true_label": "benign",
+      "violence_score": 0.01985694,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_083",
+      "true_label": "benign",
+      "violence_score": 0.00222017,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_082",
+      "true_label": "benign",
+      "violence_score": 0.01132672,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_096",
+      "true_label": "benign",
+      "violence_score": 0.00049291,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_078",
+      "true_label": "benign",
+      "violence_score": 0.00262457,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_080",
+      "true_label": "benign",
+      "violence_score": 0.00026338,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_086",
+      "true_label": "benign",
+      "violence_score": 0.00222219,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_077",
+      "true_label": "benign",
+      "violence_score": 0.02764892,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_100",
+      "true_label": "benign",
+      "violence_score": 0.97649503,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_sexual_077",
+      "true_label": "benign",
+      "violence_score": 0.00082023,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_076",
+      "true_label": "benign",
+      "violence_score": 0.00323903,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_093",
+      "true_label": "benign",
+      "violence_score": 0.00098376,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_089",
+      "true_label": "benign",
+      "violence_score": 0.00160605,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_095",
+      "true_label": "benign",
+      "violence_score": 0.01899824,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_084",
+      "true_label": "benign",
+      "violence_score": 0.12392376,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_076",
+      "true_label": "benign",
+      "violence_score": 0.01931599,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_080",
+      "true_label": "benign",
+      "violence_score": 0.0016596,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_092",
+      "true_label": "benign",
+      "violence_score": 0.00408066,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_081",
+      "true_label": "benign",
+      "violence_score": 0.00165516,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_088",
+      "true_label": "benign",
+      "violence_score": 0.08053129,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_079",
+      "true_label": "benign",
+      "violence_score": 0.01824007,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_087",
+      "true_label": "benign",
+      "violence_score": 0.00504403,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_094",
+      "true_label": "benign",
+      "violence_score": 0.01756015,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_098",
+      "true_label": "benign",
+      "violence_score": 0.00432867,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_099",
+      "true_label": "benign",
+      "violence_score": 0.0014455,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_benign_090",
+      "true_label": "benign",
+      "violence_score": 0.03409662,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_095",
+      "true_label": "benign",
+      "violence_score": 0.02193504,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_093",
+      "true_label": "benign",
+      "violence_score": 0.00192936,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_090",
+      "true_label": "benign",
+      "violence_score": 0.06101515,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_082",
+      "true_label": "violence_gore",
+      "violence_score": 0.00406557,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_089",
+      "true_label": "benign",
+      "violence_score": 0.0024566,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_098",
+      "true_label": "benign",
+      "violence_score": 0.01170689,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_sexual_083",
+      "true_label": "benign",
+      "violence_score": 0.0007467,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_090",
+      "true_label": "violence_gore",
+      "violence_score": 0.09523983,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_099",
+      "true_label": "benign",
+      "violence_score": 0.15685928,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_093",
+      "true_label": "benign",
+      "violence_score": 0.00032545,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_092",
+      "true_label": "benign",
+      "violence_score": 0.05812105,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_079",
+      "true_label": "benign",
+      "violence_score": 0.02539205,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_091",
+      "true_label": "violence_gore",
+      "violence_score": 0.99825531,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_089",
+      "true_label": "benign",
+      "violence_score": 0.00604632,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_085",
+      "true_label": "violence_gore",
+      "violence_score": 0.99834383,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_violence_gore_098",
+      "true_label": "benign",
+      "violence_score": 0.03268242,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_095",
+      "true_label": "violence_gore",
+      "violence_score": 0.89956683,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_092",
+      "true_label": "benign",
+      "violence_score": 0.08470576,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_078",
+      "true_label": "benign",
+      "violence_score": 0.0018028,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_082",
+      "true_label": "violence_gore",
+      "violence_score": 0.99940288,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_violence_gore_094",
+      "true_label": "benign",
+      "violence_score": 0.00184678,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_080",
+      "true_label": "benign",
+      "violence_score": 0.00240088,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_097",
+      "true_label": "benign",
+      "violence_score": 0.00167344,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_091",
+      "true_label": "violence_gore",
+      "violence_score": 0.014688,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_100",
+      "true_label": "violence_gore",
+      "violence_score": 0.9925257,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_087",
+      "true_label": "benign",
+      "violence_score": 0.06132033,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_084",
+      "true_label": "benign",
+      "violence_score": 0.00367778,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_083",
+      "true_label": "benign",
+      "violence_score": 0.01668422,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_097",
+      "true_label": "benign",
+      "violence_score": 0.99953949,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_violence_gore_089",
+      "true_label": "violence_gore",
+      "violence_score": 0.94470721,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_100",
+      "true_label": "benign",
+      "violence_score": 0.00631476,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_076",
+      "true_label": "violence_gore",
+      "violence_score": 0.99999011,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_077",
+      "true_label": "benign",
+      "violence_score": 0.00367827,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_087",
+      "true_label": "benign",
+      "violence_score": 0.02270555,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_096",
+      "true_label": "benign",
+      "violence_score": 0.0019667,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_083",
+      "true_label": "violence_gore",
+      "violence_score": 0.9585678,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_violence_gore_093",
+      "true_label": "violence_gore",
+      "violence_score": 0.98742652,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_086",
+      "true_label": "benign",
+      "violence_score": 0.78370899,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_076",
+      "true_label": "benign",
+      "violence_score": 0.00200155,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_084",
+      "true_label": "benign",
+      "violence_score": 0.78341764,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_dangerous_095",
+      "true_label": "benign",
+      "violence_score": 0.01316426,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_078",
+      "true_label": "violence_gore",
+      "violence_score": 0.99990642,
+      "predicted_label": "violence_gore"
+    },
+    {
+      "sample_id": "lgp_violence_gore_088",
+      "true_label": "benign",
+      "violence_score": 0.1806491,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_violence_gore_077",
+      "true_label": "benign",
+      "violence_score": 0.00128264,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_098",
+      "true_label": "benign",
+      "violence_score": 0.00068967,
+      "predicted_label": "benign"
+    },
+    {
+      "sample_id": "lgp_dangerous_080",
+      "true_label": "benign",
+      "violence_score": 0.00269188,
+      "predicted_label": "benign"
+    }
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.835072,
+      "validation_roc_auc": 0.844862
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.714589,
+      "validation_roc_auc": 0.859684
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.600585,
+      "validation_roc_auc": 0.913043
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.465948,
+      "validation_roc_auc": 0.933794
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.420165,
+      "validation_roc_auc": 0.911067
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.378294,
+      "validation_roc_auc": 0.921937
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.381818,
+      "validation_roc_auc": 0.87747
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.271674,
+      "validation_roc_auc": 0.909091
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.277198,
+      "validation_roc_auc": 0.923913
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.23136,
+      "validation_roc_auc": 0.928854
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.169721,
+      "validation_roc_auc": 0.898221
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.136318,
+      "validation_roc_auc": 0.922925
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.121549,
+      "validation_roc_auc": 0.922925
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.067248,
+      "validation_roc_auc": 0.938735
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.168043,
+      "validation_roc_auc": 0.898221
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.186297,
+      "validation_roc_auc": 0.886364
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.15046,
+      "validation_roc_auc": 0.873518
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.098558,
+      "validation_roc_auc": 0.911067
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.029046,
+      "validation_roc_auc": 0.927866
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.013766,
+      "validation_roc_auc": 0.928854
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.010026,
+      "validation_roc_auc": 0.910079
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.005607,
+      "validation_roc_auc": 0.924901
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.004199,
+      "validation_roc_auc": 0.925889
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.002984,
+      "validation_roc_auc": 0.923913
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.002631,
+      "validation_roc_auc": 0.924901
+    },
+    {
+      "epoch": 26,
+      "train_loss": 0.002054,
+      "validation_roc_auc": 0.925889
+    }
+  ],
+  "limitations": [
+    "Labels come from one human reviewer.",
+    "This development experiment uses the original violence/benign pilot rather than held-out DACA/PGJ generations.",
+    "The test set is small; confidence intervals and independent binary relabelling remain required."
+  ]
+}

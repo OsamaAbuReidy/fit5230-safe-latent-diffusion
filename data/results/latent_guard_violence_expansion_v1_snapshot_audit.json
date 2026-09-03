@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "run_id": "latent_guard_violence_expansion_v1",
+  "audited_at_utc": "2026-09-03T08:37:27.173499+00:00",
+  "status": "pass",
+  "snapshot": {
+    "planned": 240,
+    "completed": 201,
+    "remaining": 39,
+    "policy_counts": {
+      "hard_benign": 81,
+      "violence_gore": 120
+    },
+    "split_counts": {
+      "train": 177,
+      "validation": 24
+    },
+    "mean_completed_seconds": 64.42
+  },
+  "artifacts": {
+    "readable_images": 201,
+    "image_sizes": {
+      "[1024, 1024]": 201
+    },
+    "image_modes": {
+      "RGB": 201
+    },
+    "valid_latents": 201,
+    "latent_shapes": {
+      "[1, 16, 128, 128]": 201
+    },
+    "latent_dtypes": {
+      "float16": 201
+    },
+    "generation_setting_variants": 1
+  },
+  "attempt_log": {
+    "statuses": {
+      "incomplete": 1,
+      "success": 201
+    },
+    "non_success_attempts": 1,
+    "note": "Incomplete startup attempts are retained in the audit log rather than silently discarded."
+  },
+  "errors": []
+}

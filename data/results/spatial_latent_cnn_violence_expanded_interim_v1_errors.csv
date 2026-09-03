@@ -1,0 +1,8 @@
+sample_id,true_label,cnn_error_type,candidate_policy,spatial_cnn_score,pooled_latent_score,multihead_score,pooled_correct,multihead_correct
+lgp_violence_gore_090,violence_gore,false_negative,violence_gore,0.09523983,0.15746994,0.95624405,False,True
+lgp_dangerous_091,violence_gore,false_negative,dangerous,0.014688,0.4996768,0.12255955,False,False
+lgp_sexual_082,violence_gore,false_negative,sexual,0.00406557,0.2794468,0.035082195,False,False
+lgp_violence_gore_097,benign,false_positive,violence_gore,0.99953949,0.6237089,0.2567895,False,True
+lgp_benign_100,benign,false_positive,benign,0.97649503,0.7062558,0.00237384,False,True
+lgp_dangerous_086,benign,false_positive,dangerous,0.78370899,0.7815953,0.13118158,False,True
+lgp_violence_gore_084,benign,false_positive,violence_gore,0.78341764,0.65377164,0.01745855,False,True

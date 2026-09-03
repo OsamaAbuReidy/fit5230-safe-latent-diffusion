@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "benchmark": "batch-one warm model-only inference",
+  "model_checkpoint": "models/latent_guard/spatial_latent_cnn_violence_expanded_interim_v1.pt",
+  "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "input_shape": [1, 16, 128, 128],
+  "warmup_iterations": 100,
+  "timed_iterations": 1000,
+  "cuda_synchronized_each_iteration": true,
+  "cnn_latency_ms": {
+    "mean": 1.9259,
+    "median": 1.8965,
+    "p95": 2.1475,
+    "minimum": 1.782
+  },
+  "multihead_stored_latency_ms": {
+    "samples": 372,
+    "mean": 185.6799,
+    "median": 183.1275,
+    "p95": 196.2566
+  },
+  "median_speedup": 96.6,
+  "vae_decode_tiled_median_ms": 2492.7486,
+  "post_denoising_pipeline_ms": {
+    "predecode_guard_blocked_output": 1.8965,
+    "multihead_decision": 2675.8761,
+    "blocked_output_speedup": 1410.9,
+    "predecode_guard_safe_output": 2494.6451,
+    "safe_output_time_saved": 181.231
+  },
+  "scope_note": "Classifier-only speedup is 96.6x. For a blocked output, Multihead requires tiled VAE decoding plus image classification, producing a measured post-denoising decision-path speedup of 1410.9x. Denoising is common to both pipelines and excluded."
+}

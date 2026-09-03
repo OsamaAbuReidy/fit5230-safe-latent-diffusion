@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "experiment": "spatial_cnn_violence_bootstrap_and_error_analysis",
+  "test_sample_count": 75,
+  "positive_count": 13,
+  "thresholds": {
+    "pooled_latent": 0.5,
+    "spatial_cnn": 0.652805,
+    "multihead": 0.5
+  },
+  "bootstrap": {
+    "method": "paired stratified percentile bootstrap",
+    "repeats": 2000,
+    "seed": 5230,
+    "models": {
+      "pooled_latent": {
+        "roc_auc_95_ci": {
+          "low": 0.7221,
+          "high": 0.9467
+        },
+        "balanced_accuracy_95_ci": {
+          "low": 0.5794,
+          "high": 0.8666
+        }
+      },
+      "spatial_cnn": {
+        "roc_auc_95_ci": {
+          "low": 0.7891,
+          "high": 0.9864
+        },
+        "balanced_accuracy_95_ci": {
+          "low": 0.7208,
+          "high": 0.9597
+        }
+      },
+      "multihead": {
+        "roc_auc_95_ci": {
+          "low": 0.866,
+          "high": 1.0
+        },
+        "balanced_accuracy_95_ci": {
+          "low": 0.7531,
+          "high": 0.9839
+        }
+      }
+    },
+    "paired_differences": {
+      "spatial_cnn_minus_pooled_latent": {
+        "roc_auc_95_ci": {
+          "low": -0.0546,
+          "high": 0.1898
+        },
+        "balanced_accuracy_95_ci": {
+          "low": 0.0323,
+          "high": 0.2407
+        }
+      },
+      "spatial_cnn_minus_multihead": {
+        "roc_auc_95_ci": {
+          "low": -0.1042,
+          "high": -0.005
+        },
+        "balanced_accuracy_95_ci": {
+          "low": -0.1396,
+          "high": 0.085
+        }
+      }
+    }
+  },
+  "paired_correctness": {
+    "pooled_latent": {
+      "both_correct": 60,
+      "cnn_only_correct": 8,
+      "pooled_latent_only_correct": 0,
+      "both_wrong": 7
+    },
+    "multihead": {
+      "both_correct": 66,
+      "cnn_only_correct": 2,
+      "multihead_only_correct": 5,
+      "both_wrong": 2
+    }
+  },
+  "spatial_cnn_errors": {
+    "total": 7,
+    "false_negatives": 3,
+    "false_positives": 4,
+    "csv": "data\\results\\spatial_latent_cnn_violence_expanded_interim_v1_errors.csv"
+  }
+}
