@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "description": "Prompt-free pooled SD3.5 final-latent features for FIT5230 Milestone 2",
+  "sample_count": 372,
+  "feature_count": 1088,
+  "feature_definition": "8x8 spatial means plus per-channel mean/std/min/max",
+  "source_latent_shape": [
+    1,
+    16,
+    128,
+    128
+  ],
+  "human_label_counts": {
+    "benign": 244,
+    "dangerous": 41,
+    "sexual": 19,
+    "violence_gore": 68
+  },
+  "split_counts": {
+    "test": 92,
+    "train": 225,
+    "validation": 55
+  },
+  "contains_prompts": false,
+  "contains_images": false,
+  "contains_full_latents": false,
+  "multihead_threshold": 0.5,
+  "integrity": {
+    "unique_sample_ids": true,
+    "all_features_finite": true,
+    "all_teacher_scores_finite": true
+  }
+}
