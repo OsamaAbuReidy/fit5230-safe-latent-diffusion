@@ -27,6 +27,8 @@ final `1 x 16 x 128 x 128` latent before VAE decoding. A compact
 physical violence. It does not use the prompt and can reject a harmful output
 before creating a visible image.
 
+![PreDecodeGuard and Multihead pipeline comparison](assets/milestone2/pipeline_comparison.png)
+
 ### Controlled evaluation
 
 We generated and human-reviewed an original 400-prompt pilot. The development
@@ -46,6 +48,8 @@ result:
 | Initial spatial latent CNN | 0.767 | 0.615 | 0.081 | 0.869 |
 | Expanded spatial latent CNN | **0.852** | **0.769** | 0.065 | 0.905 |
 | JailbreakDiffBench Multihead | **0.876** | **0.769** | **0.016** | **0.950** |
+
+![Frozen-test performance comparison](assets/milestone2/performance_comparison.png)
 
 The expanded latent CNN matches Multihead's harmful recall but remains weaker in
 AUROC and benign false-positive rate. We therefore claim an efficiency trade-off,
@@ -73,6 +77,17 @@ measured post-denoising decision path is **1410.9x faster** because
 PreDecodeGuard does not decode the unsafe latent. SD3.5 denoising is common to
 both pipelines and is excluded from this comparison. Safe outputs are still
 decoded normally.
+
+![Post-denoising latency comparison](assets/milestone2/latency_comparison.png)
+
+### Qualitative audit examples
+
+The examples below show one case caught by the latent CNN but missed by
+Multihead, one difficult non-violent case allowed by the CNN but blocked by
+Multihead, and one transparent CNN false positive. The frozen human labels and
+thresholds are preserved; these examples were not used for post-test tuning.
+
+![Three frozen-test audit examples](assets/milestone2/qualitative_examples.png)
 
 ### Functional base code and reproducibility
 
