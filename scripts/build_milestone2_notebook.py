@@ -161,10 +161,14 @@ import sys
 
 IN_COLAB = "google.colab" in sys.modules
 REPO_URL = "https://github.com/OsamaAbuReidy/fit5230-safe-latent-diffusion.git"
-REPO_DIR = Path("/content/fit5230-safe-latent-diffusion") if IN_COLAB else Path.cwd()
+REPO_REF = "milestone1-sd35-jailbreak-scope"
+REPO_DIR = Path("/content/fit5230-safe-latent-diffusion-m2") if IN_COLAB else Path.cwd()
 
 if IN_COLAB and not REPO_DIR.exists():
-    subprocess.run(["git", "clone", "--depth", "1", REPO_URL, str(REPO_DIR)], check=True)
+    subprocess.run(
+        ["git", "clone", "--depth", "1", "--branch", REPO_REF, REPO_URL, str(REPO_DIR)],
+        check=True,
+    )
 if not (REPO_DIR / "scripts" / "run_milestone2_bundle.py").exists():
     raise FileNotFoundError("Run this notebook from the repository root or open it in Colab.")
 

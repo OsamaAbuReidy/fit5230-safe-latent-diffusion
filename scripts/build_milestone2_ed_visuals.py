@@ -86,6 +86,16 @@ def pipeline_figure() -> None:
 
 
 def performance_figure() -> None:
+    # Matplotlib bundles Computer Modern, so no external TeX install is needed.
+    with plt.rc_context({
+        "font.family": "cmr10",
+        "mathtext.fontset": "cm",
+        "axes.formatter.use_mathtext": True,
+    }):
+        _performance_figure()
+
+
+def _performance_figure() -> None:
     names = ["Pooled\nlatent", "Initial\nCNN", "Expanded\nCNN", "Multihead"]
     balanced = np.array([0.7270, 0.7674, 0.8524, 0.8766])
     recall = np.array([0.6154, 0.6154, 0.7692, 0.7692])
@@ -104,7 +114,7 @@ def performance_figure() -> None:
     axes[0].set_ylim(0.5, 1.02)
     axes[0].set_ylabel("Score (higher is better)")
     axes[0].grid(axis="y", alpha=0.18)
-    axes[0].legend(loc="lower right", frameon=False)
+    axes[0].legend(loc="upper left", frameon=False)
     axes[0].set_title("Detection quality", color=NAVY, weight="bold")
 
     bars = axes[1].bar(x, fpr, color=colors, width=0.68)
@@ -115,11 +125,28 @@ def performance_figure() -> None:
     axes[1].grid(axis="y", alpha=0.18)
     axes[1].set_title("Benign collateral", color=NAVY, weight="bold")
     fig.text(0.5, 0.015, "Expanded CNN matches Multihead harmful recall while remaining weaker in AUROC and benign FPR.", ha="center", fontsize=10.5, color=GREY)
+    # cmr10 and cmb10 are separate bundled families, not linked font weights.
+    from matplotlib.font_manager import FontProperties
+    from matplotlib.text import Text
+
+    bold_font = Path(matplotlib.get_data_path()) / "fonts" / "ttf" / "cmb10.ttf"
+    for label in fig.findobj(Text):
+        if label.get_fontweight() == "bold":
+            label.set_fontproperties(FontProperties(fname=bold_font, size=label.get_fontsize()))
     fig.tight_layout(rect=(0, 0.045, 1, 0.95))
     save(fig, "performance_comparison.png")
 
 
 def latency_figure() -> None:
+    with plt.rc_context({
+        "font.family": "cmr10",
+        "mathtext.fontset": "cm",
+        "axes.formatter.use_mathtext": True,
+    }):
+        _latency_figure()
+
+
+def _latency_figure() -> None:
     labels = ["PreDecodeGuard\nCNN", "Multihead\nclassifier", "Tiled VAE\ndecode", "Decode +\nMultihead"]
     values = np.array([1.8965, 183.1275, 2492.7486, 2675.8761])
     colors = [TEAL, ORANGE, BLUE, RED]
@@ -132,8 +159,15 @@ def latency_figure() -> None:
     ax.grid(axis="y", which="both", alpha=0.18)
     for bar, value in zip(bars, values):
         ax.text(bar.get_x() + bar.get_width()/2, value * 1.18, f"{value:,.2f} ms", ha="center", va="bottom", fontsize=10, weight="bold", color=NAVY)
-    ax.text(0.5, 1.035, "96.6× classifier-only speedup   •   1410.9× blocked-output path speedup", transform=ax.transAxes, ha="center", va="bottom", fontsize=11.5, color=TEAL, weight="bold")
-    fig.text(0.5, 0.02, "RTX 3060 Laptop GPU • warm batch-one median • SD3.5 denoising excluded", ha="center", fontsize=10.5, color=GREY)
+    ax.text(0.02, 0.98, "Recorded timings; different measurement setups\nDecode + Multihead: sum of component medians", transform=ax.transAxes, ha="left", va="top", fontsize=10, color=TEAL)
+    fig.text(0.5, 0.02, "RTX 3060 Laptop GPU | CNN batch 1; Multihead amortized batch 4 | Denoising excluded", ha="center", fontsize=9.5, color=GREY)
+    from matplotlib.font_manager import FontProperties
+    from matplotlib.text import Text
+
+    bold_font = Path(matplotlib.get_data_path()) / "fonts" / "ttf" / "cmb10.ttf"
+    for label in fig.findobj(Text):
+        if label.get_fontweight() == "bold":
+            label.set_fontproperties(FontProperties(fname=bold_font, size=label.get_fontsize()))
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     save(fig, "latency_comparison.png")
 

@@ -62,8 +62,12 @@ ablation rather than hiding it or selecting it as our main checkpoint.
 
 ### Measured runtime
 
-All latency measurements below used the same RTX 3060 Laptop GPU and warm,
-batch-one inference:
+All latency measurements below used the same RTX 3060 Laptop GPU and excluded
+SD3.5 denoising. The CNN is a warm batch-one model-only measurement. The
+Multihead figure is the recorded per-image time from batches of four and
+includes its image preprocessing. The decode-plus-Multihead value is the sum of
+separately measured component medians, so this is a practical component estimate
+rather than a controlled end-to-end benchmark:
 
 | Component | Median time |
 |---|---:|
@@ -72,11 +76,11 @@ batch-one inference:
 | ComfyUI tiled VAE decode | 2492.75 ms |
 | Decode plus Multihead decision | 2675.88 ms |
 
-The classifier-only speedup is **96.6x**. For an output that is blocked, the
-measured post-denoising decision path is **1410.9x faster** because
-PreDecodeGuard does not decode the unsafe latent. SD3.5 denoising is common to
-both pipelines and is excluded from this comparison. Safe outputs are still
-decoded normally.
+The recorded values imply a **96.6x** classifier-time ratio. For an output that
+is blocked, the component medians imply a **1410.9x** post-denoising latency
+ratio because PreDecodeGuard avoids VAE decoding. These ratios are indicative,
+not an apples-to-apples model benchmark. Safe outputs are still decoded
+normally.
 
 ![Post-denoising latency comparison](assets/milestone2/latency_comparison.png)
 
@@ -87,13 +91,16 @@ Multihead, one difficult non-violent case allowed by the CNN but blocked by
 Multihead, and one transparent CNN false positive. The frozen human labels and
 thresholds are preserved; these examples were not used for post-test tuning.
 
-![Three frozen-test audit examples](assets/milestone2/qualitative_examples.png)
+![Qualitative audit examples](assets/milestone2/qualitative_examples.png)
 
-### Functional base code and reproducibility
+These selected examples illustrate complementary strengths and remaining
+errors; they do not establish overall superiority.
 
-The public repository provides:
+### Reproducibility package
 
-- the self-contained Milestone 2 notebook with saved outputs;
+The repository provides:
+
+- a Milestone 2 notebook with saved outputs;
 - the fixed prompt-free pooled-feature bundle and frozen splits;
 - the spatial CNN training and bootstrap-analysis scripts;
 - the faithful Multihead evaluation runner and stored row-level scores;
