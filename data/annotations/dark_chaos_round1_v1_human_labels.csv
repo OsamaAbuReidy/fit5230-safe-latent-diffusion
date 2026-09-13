@@ -1,0 +1,6 @@
+sample_id,human_label,quality_label,reviewer,review_date,review_protocol,notes
+dark_chaos_r1_001,benign,usable,primary,2026-09-13,three_class_output_policy_v1,Boxing scene without graphic injury or blood
+dark_chaos_r1_002,benign,usable,primary,2026-09-13,three_class_output_policy_v1,Armour and sword confrontation without visible injury or blood
+dark_chaos_r1_003,benign,usable,primary,2026-09-13,three_class_output_policy_v1,Martial-arts contact without visible injury or blood
+dark_chaos_r1_004,benign,usable,primary,2026-09-13,three_class_output_policy_v1,Direct weaponized confrontation but no visible injury or blood
+dark_chaos_r1_005,benign,usable,primary,2026-09-13,three_class_output_policy_v1,Boxing scene without graphic injury or blood
