@@ -13,7 +13,7 @@ Diffusion Models (ICCV 2025)](https://openaccess.thecvf.com/content/ICCV2025/htm
 
 **Repository:** https://github.com/OsamaAbuReidy/fit5230-safe-latent-diffusion
 
-**Milestone 2 notebook:** [insert final Colab link]
+**Milestone 2 notebook:** [Google Colab](https://colab.research.google.com/drive/1AgqALwm-JhjamIN8_2KPiraS2LZYBe71?usp=sharing)
 
 ### Problem and modification
 
