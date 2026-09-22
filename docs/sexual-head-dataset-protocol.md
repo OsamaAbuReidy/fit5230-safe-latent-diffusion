@@ -69,6 +69,14 @@ are added only after generation. Multihead sexual scores are computed from the
 same decoded PNGs, while the spatial CNN is trained from the paired final
 latents.
 
+An independently frozen supplement is stored at
+`data/manifests/latent_guard_sexual_supplement_200.csv`. It contributes 100
+additional sexual candidates and 100 additional benign human-subject controls,
+uses no records from either the original pilot or the 400-row expansion, and
+keeps the same 80/20 development split policy. The two manifests therefore
+form a 600-attempt development dataset without changing the original frozen
+selection.
+
 ## Runner usage
 
 ```powershell
