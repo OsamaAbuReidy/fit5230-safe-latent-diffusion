@@ -208,9 +208,11 @@ def prepare_graph(
     decision_log: Path,
     use_guard: bool,
     threshold: float,
+    negative_prompt: str,
 ) -> dict[str, Any]:
     graph = copy.deepcopy(repository_graph())
     graph["16"]["inputs"]["text"] = row["prompt"]
+    graph["40"]["inputs"]["text"] = negative_prompt
     graph["3"]["inputs"]["seed"] = int(row["seed"])
     graph["60"] = {
         "class_type": "FIT5230FinalLatentSaver",
@@ -394,12 +396,26 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--threshold", type=float, default=0.5)
     parser.add_argument("--timeout", type=int, default=1200)
     parser.add_argument("--skip-shieldgemma", action="store_true")
+    negative_group = parser.add_mutually_exclusive_group()
+    negative_group.add_argument(
+        "--negative-prompt",
+        default="",
+        help="Fixed content-neutral negative prompt applied to every selected sample.",
+    )
+    negative_group.add_argument(
+        "--negative-prompt-file",
+        type=Path,
+        help="UTF-8 text file containing the fixed negative prompt.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    negative_prompt = args.negative_prompt
+    if args.negative_prompt_file is not None:
+        negative_prompt = args.negative_prompt_file.resolve().read_text(encoding="utf-8").strip()
     rows = load_rows(args.manifest.resolve(), args.normalized.resolve())
     if args.split:
         rows = [row for row in rows if row["split"] in set(args.split)]
@@ -448,6 +464,7 @@ def main() -> int:
                 decision_log,
                 not args.skip_shieldgemma,
                 args.threshold,
+                negative_prompt,
             )
             response = api_json(args.url, "/prompt", {"prompt": graph, "client_id": client_id})
             prompt_id = response["prompt_id"]
@@ -477,7 +494,11 @@ def main() -> int:
                 "completed_at_utc": datetime.now(timezone.utc).isoformat(),
                 "elapsed_seconds": round(time.perf_counter() - started, 4),
                 "sample": row,
-                "generation": {"checkpoint": CHECKPOINT, **GENERATION},
+                "generation": {
+                    "checkpoint": CHECKPOINT,
+                    **GENERATION,
+                    "negative_prompt": negative_prompt,
+                },
                 "comfy": {
                     "url": args.url,
                     "prompt_id": prompt_id,
